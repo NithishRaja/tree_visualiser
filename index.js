@@ -55,9 +55,19 @@ var heading = Vue.createApp({
       for(var i=0;i<this.nodes.length;++i){
         // Push nodes at required height into array
         if(this.nodes[i].height == currentHeight){
-          temp.push(this.nodes[i])
+          temp.push(this.nodes[i]);
         }
       }
+      // Sort elements based on parent id
+      temp.sort(function(a, b){
+        if(a.parent > b.parent){
+          return 1;
+        }
+        if(a.parent < b.parent){
+          return -1;
+        }
+        return 0;
+      });
       // Return array
       return temp;
     },
