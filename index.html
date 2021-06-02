@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>TREE VISUALISER</title>
+  </head>
+  <script src="https://unpkg.com/vue@3"></script>
+  <link rel="stylesheet" href="./index.css">
+  <body>
+    <div class="input">
+      <input type="number"
+      v-model="newNode"
+      placeholder="enter new key">
+      <button
+      :disabled="newNode == ''"
+      @click="addNewNode()"
+      type="button">Add</button>
+      <button
+      @click="cancelInsert"
+      type="button">Cancel</button>
+    </div>
+    <div id="tree">
+      <button v-if="nodes.length == 0"
+      :disabled="addNode"
+      @click="setNewParent(-1)"
+      :class="['node',
+      addNode?'inactive':'active']">
+        Empty tree
+      </button>
+      <div v-for="index in height()":key="index" class="container">
+        <button
+        v-for="node in getNodes(index)":key="node.id"
+        :disabled="addNode"
+        @click="setNewParent(node.id)"
+        :class="['node',
+        addNode?'inactive':'active']">
+          {{node.key}}
+        </button>
+      </div>
+    </div>
+  </body>
+  <script src="./index.js"></script>
+</html>
