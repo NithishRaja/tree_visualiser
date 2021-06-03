@@ -6,6 +6,18 @@ body{
   align-items: stretch;
 }
 
+#svg{
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.line{
+  stroke-width:2px;
+  stroke:rgb(0,0,0);
+}
+
 #tree{
   display: flex;
   flex-direction: column;

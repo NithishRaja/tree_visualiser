@@ -40,6 +40,15 @@
         </button>
       </div>
     </div>
+    <svg id="svg" v-if="displayLines">
+      <line
+      v-for="(line, index) in getCoordinates"
+      :key="index"
+      :x1="line.first.x":y1="line.first.y"
+      :x2="line.second.x":y2="line.second.y"
+      :id="index"
+      class="line"/>
+    </svg>
   </body>
   <script src="./index.js"></script>
 </html>

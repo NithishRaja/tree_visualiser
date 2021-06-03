@@ -1,4 +1,4 @@
-var heading = Vue.createApp({
+var app = Vue.createApp({
   data(){
     return {
       nodes: [
@@ -29,7 +29,42 @@ var heading = Vue.createApp({
       ],
       newNode: "",
       newParent: "",
-      addNode: false
+      addNode: false,
+      displayLines: false
+    }
+  },
+  computed: {
+    // Fuction to return coorfinates for lines
+    getCoordinates(){
+      // Initialise empty array
+      temp = []
+      // Iterate over all nodes
+      for(var i=0;i<this.nodes.length;++i){
+        // Check if node has parent
+        if(this.nodes[i].parent != -1){
+          // Get the DOM elements for current node and its parent
+          first = document.getElementById(this.nodes[i].id)
+          second = document.getElementById(this.nodes[this.nodes[i].parent].id)
+          // Get the coordinates of currnet node and parent
+          first = first.getBoundingClientRect();
+          second = second.getBoundingClientRect();
+          // Get coordinates
+          tempObj = {
+            'first': {
+              'x': first.left + first.width/2,
+              'y': first.top + first.height/2
+            },
+            'second': {
+              'x': second.left + second.width/2,
+              'y': second.top + second.height/2
+            }
+          }
+          // Push object into array
+          temp.push(tempObj)
+        }
+      }
+      // Return array
+      return temp
     }
   },
   methods: {
@@ -116,16 +151,19 @@ var heading = Vue.createApp({
           this.nodes.push(node);
         }
       }
+      this.newParent = ""
       this.toggleAddNode()
     },
     // Function to update the newParent data
     setNewParent(index){
       this.newParent = index;
+      this.displayLines = false;
       this.toggleAddNode();
     },
     // Function to roll back add node process
     cancelInsert(){
       this.newParent = "";
+      this.displayLines = true;
       this.toggleAddNode();
     },
     // Function to toggle addNodeboolean
@@ -133,6 +171,18 @@ var heading = Vue.createApp({
       console.log("toggle", this.addNode);
       this.newNode = ""
       this.addNode = !this.addNode
+    }
+  },
+  mounted(){
+    this.displayLines = true
+  },
+  updated(){
+    if(this.newParent === ""){
+      console.log("here11111r", this.newParent);
+      this.displayLines = true
+    }else{
+      console.log("hererer22222", this.newParent);
+      this.displayLines = false
     }
   }
 }).mount("body")
