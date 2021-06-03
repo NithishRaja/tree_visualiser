@@ -1,32 +1,7 @@
 var app = Vue.createApp({
   data(){
     return {
-      nodes: [
-        {
-          id: 0,
-          key: 112,
-          child: 1,
-          sibling: -1,
-          parent: -1,
-          height: 1
-        },
-        {
-          id: 1,
-          key: 11,
-          child: -1,
-          sibling: 2,
-          parent: 0,
-          height: 2
-        },
-        {
-          id: 2,
-          key: 12,
-          child: -1,
-          sibling: -1,
-          parent: 0,
-          height: 2
-        }
-      ],
+      nodes: [],
       newNode: "",
       newParent: "",
       addNode: false,
@@ -109,7 +84,6 @@ var app = Vue.createApp({
     },
     // Function to add a new node
     addNewNode(){
-      // console.log("parent", this.newParent, "key", this.newNode);
       node = {
         id: this.nodes.length,
         key: this.newNode,
@@ -151,8 +125,8 @@ var app = Vue.createApp({
           // Push new node into list
           this.nodes.push(node);
         }
+        this.newParent = ""
       }
-      this.newParent = ""
       this.toggleAddNode()
     },
     // Function to update the newParent data
@@ -169,7 +143,6 @@ var app = Vue.createApp({
     },
     // Function to toggle addNodeboolean
     toggleAddNode(){
-      console.log("toggle", this.addNode);
       this.newNode = ""
       this.addNode = !this.addNode
     }
@@ -179,10 +152,8 @@ var app = Vue.createApp({
   },
   updated(){
     if(this.newParent === ""){
-      console.log("here11111r", this.newParent);
       this.displayLines = true
     }else{
-      console.log("hererer22222", this.newParent);
       this.displayLines = false
     }
   }
