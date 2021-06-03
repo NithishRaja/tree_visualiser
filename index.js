@@ -1,7 +1,17 @@
 var app = Vue.createApp({
   data(){
     return {
-      nodes: [],
+      // Make ID as -1 for empty tree
+      nodes: [
+        {
+          id: 0,
+          key: "Empty Node",
+          child: -1,
+          sibling: -1,
+          parent: -1,
+          height: 1
+        }
+      ],
       newNode: "",
       newParent: "",
       addNode: false,
@@ -92,10 +102,10 @@ var app = Vue.createApp({
         parent: this.parent,
         height: 1
       }
-      // Check if tree has a root
-      if(this.newParent == -1){
+      // Check if tree is empty
+      if(this.nodes[0].key === "Empty Node"){
         // Create root node
-        this.nodes.push(node);
+        this.nodes[0].key = this.newNode
       }else{
         // Check if parent has child
         if(this.nodes[this.newParent].child == -1){
@@ -125,8 +135,8 @@ var app = Vue.createApp({
           // Push new node into list
           this.nodes.push(node);
         }
-        this.newParent = ""
       }
+      this.newParent = ""
       this.toggleAddNode()
     },
     // Function to update the newParent data
