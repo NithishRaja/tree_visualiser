@@ -1,5 +1,7 @@
 # TREE VISUALISER
 
+A simple visualiser for tree data structures. Works with nodes having any number of children.
+
 ## Editing code
 
 * HTML code is located inside `index.html`
