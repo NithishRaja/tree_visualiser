@@ -45,18 +45,19 @@ var app = Vue.createApp({
           // Get the DOM elements for current node and its parent
           first = document.getElementById(this.nodes[i].id)
           second = document.getElementById(this.nodes[this.nodes[i].parent].id)
+          body = document.getElementById("body")
           // Get the coordinates of currnet node and parent
           first = first.getBoundingClientRect();
           second = second.getBoundingClientRect();
-          // Get coordinates
+          body = body.getBoundingClientRect();
           tempObj = {
             'first': {
-              'x': first.left + first.width/2,
-              'y': first.top + first.height/2
+              'x': (first.left - body.left) + first.width/2,
+              'y': (first.top - body.top) + first.height/2
             },
             'second': {
-              'x': second.left + second.width/2,
-              'y': second.top + second.height/2
+              'x': (second.left - body.left) + second.width/2,
+              'y': (second.top - body.top) + second.height/2
             }
           }
           // Push object into array
