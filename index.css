@@ -36,6 +36,23 @@ body{
   align-items: center;
 }
 
+.btn{
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.selector{
+  background-color: #f5f5f5;
+}
+
+.add{
+  background-color: #00ff7f;
+}
+
+.cancel{
+  background-color: #f08080;
+}
+
 .container{
   display: flex;
   flex-direction: row;

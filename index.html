@@ -11,14 +11,17 @@
     v-if="addNode">
       <input type="number"
       v-model="newNode"
-      placeholder="enter new key">
+      placeholder="enter new key"
+      class="btn selector">
       <button
       :disabled="newNode == ''"
       @click="addNewNode()"
-      type="button">Add</button>
+      type="button"
+      class="btn add">Add</button>
       <button
       @click="cancelInsert"
-      type="button">Cancel</button>
+      type="button"
+      class="btn cancel">Cancel</button>
     </div>
     <div id="tree">
       <button v-if="nodes.length == 0"
