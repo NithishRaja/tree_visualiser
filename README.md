@@ -13,7 +13,7 @@
 
 ## How to use
 
-* Click on a node to add a child to the noed
+* Click on a node to add a child to the node
 * Enter key as input when prompted
 
 ## Docker
