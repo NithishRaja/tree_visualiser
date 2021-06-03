@@ -29,11 +29,13 @@
       </button>
       <div v-for="index in height()":key="index" class="container">
         <button
-        v-for="node in getNodes(index)":key="node.id"
+        v-for="node in getNodes(index)"
+        :key="node.id"
         :disabled="addNode"
         @click="setNewParent(node.id)"
         :class="['node',
-        addNode?'inactive':'active']">
+        addNode?'inactive':'active']"
+        :id="node.id">
           {{node.key}}
         </button>
       </div>
