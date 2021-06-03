@@ -15,3 +15,8 @@
 
 * Click on a node to add a child to the noed
 * Enter key as input when prompted
+
+## Docker
+
+* The dcker imaage can be found at [docker hub](https://hub.docker.com/repository/docker/nithishraja/tree-visualiser)
+* Instructions on how to use the image is also present at [docker hub](https://hub.docker.com/repository/docker/nithishraja/tree-visualiser)
